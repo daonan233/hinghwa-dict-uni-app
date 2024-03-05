@@ -4,21 +4,14 @@
     <!--搜索单个测试-->
     <view class="cu-bar search bg-white">
       <view class="action">
-        <text>
-          搜题
-        </text>
+        <text> 搜题 </text>
       </view>
       <view class="search-form round">
         <text class="cuIcon-search" />
-        <input
-          placeholder="兴化语记"
-          @tap="toSearchQuizPage()"
-        >
+        <input placeholder="兴化语记" @tap="toSearchQuizPage()" />
       </view>
       <view class="action">
-        <text class="text-blue">
-          搜索
-        </text>
+        <text class="text-blue"> 搜索 </text>
       </view>
     </view>
     <!--说明卡片-->
@@ -26,12 +19,8 @@
       <view class="cu-item padding">
         <view class="cu-bar">
           <view class="action sub-title">
-            <text class="text-xl text-bold text-blue">
-              聪明花开
-            </text>
-            <text class="text-ABC text-blue">
-              Quiz
-            </text>
+            <text class="text-xl text-bold text-blue"> 聪明花开 </text>
+            <text class="text-ABC text-blue"> Quiz </text>
           </view>
         </view>
         <text class="text-content indent">
@@ -56,32 +45,27 @@
       <!--随机测试-->
       <view
         class="cu-item padding"
-        style="background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)"
+        style="
+          background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+        "
       >
         <view class="cu-bar">
           <view class="action">
-            <text class="text-xl text-bold text-blue">
-              随机测试
-            </text>
+            <text class="text-xl text-bold text-blue"> 随机测试 </text>
           </view>
         </view>
         <view class="flex">
-          <text
-            class="text-content padding-left"
-            style="max-width: 60vw"
-          >
+          <text class="text-content padding-left" style="max-width: 60vw">
             方言俚语、莆仙文化小知识等等有趣的莆仙话小测试都在这里~
           </text>
           <!--开始答题按钮-->
           <view class="quiz-btn">
             <button
-              style="height: 80upx;width: 160upx"
+              style="height: 80upx; width: 160upx"
               class="cu-btn bg-blue shadow"
               @tap="toRandomQuizPage()"
             >
-              <text class="text-sm">
-                开始答题
-              </text>
+              <text class="text-sm"> 开始答题 </text>
             </button>
           </view>
         </view>
@@ -89,65 +73,55 @@
       <!--试卷-->
       <view
         class="cu-item padding"
-        style="background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)"
+        style="
+          background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+        "
       >
         <view class="cu-bar">
           <view class="action">
-            <text class="text-xl text-bold text-blue">
-              方言能力小测验！
-            </text>
+            <text class="text-xl text-bold text-blue"> 方言能力小测验！ </text>
           </view>
         </view>
         <view class="flex">
-          <text
-            class="text-content padding-left"
-            style="max-width: 60vw"
-          >
+          <text class="text-content padding-left" style="max-width: 60vw">
             一个小小的能力测验~快看看你能拿多少分数吧！
           </text>
           <!--开始答题按钮-->
           <view class="quiz-btn">
             <button
-              style="height: 80upx;width: 160upx"
+              style="height: 80upx; width: 160upx"
               class="cu-btn bg-blue shadow"
               @tap="toTestPage()"
             >
-              <text class="text-sm">
-                开始测验
-              </text>
+              <text class="text-sm"> 开始测验 </text>
             </button>
           </view>
         </view>
       </view>
       <view
         class="cu-item padding"
-        style="background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%)"
+        style="
+          background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+        "
       >
         <view class="cu-bar">
           <view class="action">
-            <text class="text-xl text-bold text-blue">
-              方言能力小测验！
-            </text>
+            <text class="text-xl text-bold text-blue"> 方言能力小测验！ </text>
           </view>
         </view>
         <!--组卷测试，3.0增加-->
         <view class="flex">
-          <text
-            class="text-content padding-left"
-            style="max-width: 60vw"
-          >
+          <text class="text-content padding-left" style="max-width: 60vw">
             组卷测试~快来看看你能答对多少题吧！
           </text>
           <!--开始答题按钮-->
           <view class="quiz-btn">
             <button
-              style="height: 80upx;width: 160upx"
+              style="height: 80upx; width: 160upx"
               class="cu-btn bg-blue shadow"
               @tap="toPaperPage()"
             >
-              <text class="text-sm">
-                组卷测试
-              </text>
+              <text class="text-sm"> 组卷测试 </text>
             </button>
           </view>
         </view>
@@ -177,9 +151,12 @@
 
 <script>
 import {
-  toRandomQuizPage, toSearchQuizPage, toTestPage, toPaperPage,
-} from '@/routers/quiz';
-import { defaultMessage } from '@/services/shareMessages';
+  toRandomQuizPage,
+  toSearchQuizPage,
+  toTestPage,
+  toPaperPage,
+} from "@/routers/quiz";
+import { defaultMessage } from "@/services/shareMessages";
 
 const app = getApp();
 
@@ -198,8 +175,8 @@ export default {
    */
   onShareAppMessage() {
     return {
-      title: '聪明花开',
-      path: '/pages/quizzes/index',
+      title: "聪明花开",
+      path: "/pages/quizzes/index",
       ...defaultMessage(),
     };
   },
@@ -213,7 +190,7 @@ export default {
 }
 
 .quiz-btn {
-  margin: 30 rpx 0;
+  margin: 30rpx 0;
   display: flex;
   flex-direction: column;
   align-items: center;
