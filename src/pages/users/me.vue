@@ -1,24 +1,14 @@
 <template>
   <view>
-    <scroll-view
-      class="scrollPage"
-      scroll-y
-    >
+    <scroll-view class="scrollPage" scroll-y>
       <image
         class="bg-image"
         mode="aspectFill"
         src="https://cos.edialect.top/miniprogram/user.png"
       />
       <view class="bg-info">
-        <view
-          class="avatar"
-          @tap="toUserInfoPage"
-        >
-          <image
-            :src="avatar"
-            class="cu-avatar round"
-            mode="aspectFill"
-          />
+        <view class="avatar" @tap="toUserInfoPage">
+          <image :src="avatar" class="cu-avatar round" mode="aspectFill" />
         </view>
         <view class="text">
           {{ nickname }}
@@ -59,7 +49,9 @@
           </view>
         </view>
       </view>
-      <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+      <view
+        class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius"
+      >
         <view class="cu-item arrow">
           <navigator
             class="content"
@@ -67,21 +59,17 @@
             url="/pages/users/me/likedarticles"
           >
             <text class="cuIcon-appreciate text-grey" />
-            <text class="text-grey">
-              点赞文章
-            </text>
+            <text class="text-grey"> 点赞文章 </text>
           </navigator>
         </view>
         <view class="cu-item arrow">
           <navigator
             class="content"
             hover-class="none"
-            url="/pages/quizzes/quizzset/index"
+            url="/pages/users/me/articles"
           >
             <text class="cuIcon-edit text-grey" />
-            <text class="text-grey">
-              我的文章
-            </text>
+            <text class="text-grey"> 我的文章 </text>
           </navigator>
         </view>
         <!--        <view class="cu-item arrow">-->
@@ -109,49 +97,31 @@
         <!--          </navigator>-->
         <!--        </view>-->
       </view>
-      <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-        <view
-          class="cu-item arrow"
-          @tap="toChangePasswordPage()"
-        >
+      <view
+        class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius"
+      >
+        <view class="cu-item arrow" @tap="toChangePasswordPage()">
           <view class="content">
             <text class="cuIcon-write text-grey" />
-            <text class="text-grey">
-              修改密码
-            </text>
+            <text class="text-grey"> 修改密码 </text>
           </view>
         </view>
-        <view
-          class="cu-item arrow"
-          @tap="bindingWechat()"
-        >
+        <view class="cu-item arrow" @tap="bindingWechat()">
           <view class="content">
             <text class="cuIcon-group text-grey" />
-            <text class="text-grey">
-              绑定微信
-            </text>
+            <text class="text-grey"> 绑定微信 </text>
           </view>
         </view>
-        <view
-          class="cu-item arrow"
-          @tap="toTuxiaochaoPage()"
-        >
+        <view class="cu-item arrow" @tap="toTuxiaochaoPage()">
           <view class="content">
             <text class="cuIcon-question text-grey" />
-            <text class="text-grey">
-              问题反馈
-            </text>
+            <text class="text-grey"> 问题反馈 </text>
           </view>
         </view>
-        <view
-          class="cu-item arrow"
-          @tap="exit()"
-        >
+        <view class="cu-item arrow" @tap="exit()">
           <view class="content">
             <text class="cuIcon-exit text-grey" />
-            <text class="text-grey">
-              退出登录
-            </text>
+            <text class="text-grey"> 退出登录 </text>
           </view>
         </view>
       </view>
@@ -161,21 +131,27 @@
 </template>
 
 <script>
-import { toIndexPage, toTuxiaochaoPage } from '@/routers';
+import { toIndexPage, toTuxiaochaoPage } from "@/routers";
 import {
-  bindingWechat, cancelBindingWechat, clearUserInfo, getUserInfo,
-} from '@/services/user';
+  bindingWechat,
+  cancelBindingWechat,
+  clearUserInfo,
+  getUserInfo,
+} from "@/services/user";
 import {
-  toChangePasswordPage, toPronunciationsPage, toUserInfoPage, toUserWordsPage,
-} from '@/routers/user';
+  toChangePasswordPage,
+  toPronunciationsPage,
+  toUserInfoPage,
+  toUserWordsPage,
+} from "@/routers/user";
 
 const app = getApp();
 export default {
   data() {
     return {
-      id: '',
-      avatar: '',
-      nickname: '',
+      id: "",
+      avatar: "",
+      nickname: "",
       recordsCount: 0,
       wordsCount: 0,
       visitTotal: 0,
@@ -209,14 +185,14 @@ export default {
      */
     exit() {
       uni.showModal({
-        content: '是否退出当前登录？',
+        content: "是否退出当前登录？",
 
         success: async (res) => {
           if (res.confirm) {
             clearUserInfo();
-            await toIndexPage(uni.getSystemInfoSync().uniPlatform === 'web');
+            await toIndexPage(uni.getSystemInfoSync().uniPlatform === "web");
             uni.showToast({
-              title: '登出成功！',
+              title: "登出成功！",
             });
           }
         },
@@ -232,7 +208,7 @@ export default {
       if (!userInfo.user.wechat) {
         // #ifndef MP-WEIXIN
         uni.showToast({
-          title: '请在微信小程序中绑定微信',
+          title: "请在微信小程序中绑定微信",
         });
         // #endif
         // #ifdef MP-WEIXIN
@@ -242,23 +218,23 @@ export default {
       }
       // 已经绑定微信
       uni.showModal({
-        content: '当前用户已经绑定微信！',
-        cancelText: '返回',
-        confirmText: '继续操作',
+        content: "当前用户已经绑定微信！",
+        cancelText: "返回",
+        confirmText: "继续操作",
 
         success(continueOperating) {
           // 继续操作
           if (continueOperating.confirm) {
             // 取消绑定
             uni.showModal({
-              content: '是否解除绑定？',
+              content: "是否解除绑定？",
               success: async (cancelBinding) => {
                 if (cancelBinding.confirm) {
                   await cancelBindingWechat(app.globalData.id);
                   // 绑定到此微信
-                  if (uni.getSystemInfoSync().uniPlatform === 'mp-weixin') {
+                  if (uni.getSystemInfoSync().uniPlatform === "mp-weixin") {
                     uni.showModal({
-                      content: '是否绑定至此微信？',
+                      content: "是否绑定至此微信？",
                       success: async (binding) => {
                         if (binding.confirm) {
                           await bindingWechat(app.globalData.id);
